@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Você ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      text-align: center;
+    }
+    #startButton {
+      margin-top: 40vh;
+      padding: 20px 30px;
+      font-size: 1.5em;
+      color: white;
+      background-color: #c94f7c;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    #content {
+      display: none;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
+      color: #c94f7c;
+    }
+    section {
+      padding: 40px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    img {
+      width: 90%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin-top: 20px;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    footer {
+      padding: 20px;
+      font-size: 1.1em;
+      color: #fff;
+    }
+    audio {
+      display: none; /* player invisível */
+    }
+  </style>
+</head>
+<body>
+
+  <button id="startButton">❤️ Clique aqui para ouvir nossa música enquanto vê as fotos ❤️</button>
+
+  <div id="content">
+    <h1>Para você ❤️</h1>
+
+    <section>
+      <h2>Eu te amo ❤️</h2>
+      <img src="imagens/FOTO1.jpg" alt="nós dois ao pôr do sol">
+    </section>
+
+    <section>
+      <h2>Você é tudo o que eu sempre quis ✨</h2>
+      <img src="imagens/FOTO2.jpg" alt="nós sorrindo perto das flores roxas">
+    </section>
+
+    <section>
+      <h2>Você é maravilhosa 😍</h2>
+      <img src="imagens/FOTO3.jpg" alt="você me olhando com carinho">
+    </section>
+
+    <section>
+      <h2>Amo sua companhia 🥰</h2>
+      <img src="imagens/FOTO4.jpg" alt="selfie juntos ao pôr do sol">
+    </section>
+
+    <section>
+      <h2>Com você, cada momento é especial 🌅</h2>
+      <img src="imagens/FOTO5.jpg" alt="abraçados olhando o pôr do sol">
+    </section>
+
+    <section>
+      <h2>Obrigado por existir na minha vida! ❤️</h2>
+      <img src="imagens/FOTO6.jpg" alt="mais uma do pôr do sol juntos">
+    </section>
+
+    <footer>Feito com amor por mim para você 💖</footer>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="audio/lembranca-boa.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    document.getElementById('startButton').addEventListener('click', function() {
+      document.getElementById('bgMusic').play().catch(e=>{});
+      document.getElementById('content').style.display = 'block';
+      this.style.display = 'none';
+      onScroll(); // mostra seções que já estiverem na tela
+    });
+
+    function onScroll() {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) {
+          sec.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+  </script>
+
+</body>
+</html>
